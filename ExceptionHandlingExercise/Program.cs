@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace ExceptionHandlingExercise
 {
@@ -18,31 +17,40 @@ namespace ExceptionHandlingExercise
             // Below we will set this up 
             // ------------------------------------------------------------------------------
 
-
+            char[] arr = { 'A', 'B', 'C', '1', '2', '3', '4', '5', '6' }; //this is a character array
+            List<int> numbers = new List<int>(); //this is a number list
+            string str = string.Empty;
 
             //TODO START HERE:
-            
-            // Make a foreach loop to iterate through your character array
-            
-                // Now create a try catch
-                
-                
-                    // Inside your try block
-                        // set your string variable to each array element in your char[] to .ToString()
-                        // Now, using int.Parse, parse your string variable and store in an int variable
-                        // Then add each int to your list
-                
-                // catch your Exception:
-                // in the scope of your catch you can use the following, 
-                
-                    //Console.WriteLine($"Unable to Parse '{character}'"); //character will be the name of each item in your collection
-                
-            
 
-            //foreach (var num in numbers)
-            //{
-            //    Console.WriteLine(num);
-            //}
+            // Make a foreach loop to iterate through your character array
+            Console.WriteLine("Exception Messages: ");
+            Console.WriteLine();
+            foreach (var item in arr)
+            {
+
+
+                // Now create a try catch
+
+                try
+                {
+                    str = item.ToString(); //parsing character to a string
+                    int num = int.Parse(str); //parsing string to an int
+                    numbers.Add(num); //adding number to the list
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"Unable to Parse '{item}'"); //special message written out if 
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Numbers in my list: ");
+            Console.WriteLine();
+            foreach (var num in numbers)
+            {
+                Console.WriteLine(num);
+            }
         }
     }
 }
